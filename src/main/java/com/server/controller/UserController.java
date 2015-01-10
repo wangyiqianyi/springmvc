@@ -26,12 +26,26 @@ import java.util.List;
 public class UserController {
     @Resource
     private IUserService userService;
+    /**
+     *
+     *
+     * Description:  user
+     * @return   请求重定向redirect:/user/users 表示执行操作结束后请求定向为/user/users
+     *
+     */
     @RequestMapping(value = "/user",method = RequestMethod.GET)
     public String user(ModelMap model){
         model.addAttribute("message","Hello World");
 
-        return "hello";
+        return "redirect:/user/users";
     }
+    /**
+     *
+     *
+     * Description:  登录界面
+     * @return   页面转到/WEB-INF/pages/user/login.jsp
+     *
+     */
     @RequestMapping(method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
         model.addAttribute("message", "Hello world!");
@@ -89,6 +103,15 @@ public class UserController {
         userService.delete(uuid);
         return "redirect:/user/users";
     }
+    /**
+     *
+     *
+     * Description:     查看操作 根据用户名查看  REST风格: /detail/查看的用户名
+     * @param uuid    带查看的用户id@PathVariable 修饰uuid 表示用请求路径中的uuid作为 形参
+     * @param model        携带数据的Model
+     * @return            视图页面 /WEB-INF/pages/user/detail.jsp页面
+     *
+     */
     @RequestMapping(value = "/user/{uuid}",method = RequestMethod.GET)
     public String detail(@PathVariable String uuid,Model model){
         Users user=userService.getById(uuid);
