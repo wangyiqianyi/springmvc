@@ -12,6 +12,9 @@ public class Users {
     private  String uuid;
     private String username;
     private String pwd;
+    private String age;
+    private String phone;
+    private String email;
     @Column(name="user_name")
     public String getUsername() {
         return username;
@@ -35,8 +38,31 @@ public class Users {
     public String getUuid() {
         return uuid;
     }
-
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+    @Column(name = "age")
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+    @Column(name = "phone")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
