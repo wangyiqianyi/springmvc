@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-  <form action="/user/add" method="post">
+  <form action="/user/${user.uuid}/detail" method="post">
       <table>
      <tr>
        <td>用户名:</td>
