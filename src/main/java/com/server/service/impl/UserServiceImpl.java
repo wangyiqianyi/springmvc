@@ -4,9 +4,8 @@ import com.server.dao.IUserDao;
 import com.server.entity.Users;
 import com.server.service.IUserService;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ import java.util.List;
 @Service
 @Transactional
 public class UserServiceImpl implements IUserService{
-    @Resource
+
     private IUserDao userDao;
     @Override
     public void save(Users user) {
@@ -29,16 +28,24 @@ public class UserServiceImpl implements IUserService{
 
     @Override
     public List<Users> getAllUser() {
-        return userDao.getAllUser();
+        return userDao.findList("from users");
     }
-
+    @Transactional
     @Override
     public void update(Users user) {
-         userDao.update(user);
+       try{
+           userDao.update(user);
+       }catch (Exception e){
+           e.printStackTrace();;
+       }
     }
 
     @Override
     public Users getById(String id) {
         return (Users)userDao.getById(id);
+    }
+    @Resource
+    public void setUserDao(IUserDao userDao) {
+        this.userDao = userDao;
     }
 }

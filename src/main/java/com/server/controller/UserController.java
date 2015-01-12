@@ -24,7 +24,7 @@ import java.util.List;
 @Scope
 @RequestMapping("/")
 public class UserController {
-    @Resource
+
     private IUserService userService;
     /**
      *
@@ -159,5 +159,9 @@ public class UserController {
         user.setUuid(uuid);
         userService.update(user);
         return "redirect:/user/users";
+    }
+    @Resource
+    public void setUserService(IUserService userService) {
+        this.userService = userService;
     }
 }

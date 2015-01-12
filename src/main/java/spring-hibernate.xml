@@ -14,7 +14,10 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         ">
-
+    <context:annotation-config/>
+    <context:component-scan base-package="com.server.*">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+            </context:component-scan>
     <!-- Hibernate4 -->
     <!-- 加载资源文件  其中包含变量信息，必须在Spring配置文件的最前面加载，即第一个加载-->
     <context:property-placeholder location="classpath:jdbc-mysql.properties" />
@@ -33,7 +36,6 @@
             <props>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-                <prop key="hibernate.connection.autocommit">false</prop>
                 <!--  <prop key="hibernate.current_session_context_class">thread</prop> -->
             </props>
         </property>
@@ -60,5 +62,5 @@
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
   <!--配置基于注解的事物支持-->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 </beans>
