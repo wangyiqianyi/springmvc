@@ -33,26 +33,28 @@ public class UserDaoImpl implements IUserDao {
         return (Users)session.get(Users.class,id);
     }
    public Session openSession(){
-       return sessionFactory.openSession();
+       return sessionFactory.getCurrentSession();
    }
     @Override
     public void delete(String id) {
         Users user=getById(id);
         if (user!=null){
             openSession().delete(user);
+            openSession().flush();
         }
 
     }
 
     @Override
     public void save(Users user) {
-        sessionFactory.getCurrentSession().saveOrUpdate(user);
-        sessionFactory.getCurrentSession().flush();
+        openSession().saveOrUpdate(user);
+        openSession().flush();
     }
 
     @Override
     public void update(Users user) {
         openSession().update(user);
+        openSession().flush();
     }
 
 }

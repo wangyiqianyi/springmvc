@@ -122,7 +122,7 @@ public class UserController {
     @RequestMapping(value = "/user/{uuid}/detail",method = RequestMethod.GET)
     public String detail(@PathVariable String uuid,Model model){
         Users user=userService.getById(uuid);
-        model.addAttribute(user);
+        model.addAttribute("user",user);
         return "user/detail";
     }
     /**
@@ -152,11 +152,10 @@ public class UserController {
      *
      */
     @RequestMapping(value="/user/{uuid}/update",method=RequestMethod.POST)
-    public String update(@Validated Users user,BindingResult br,String uuid){
+    public String update(@Validated Users user,BindingResult br,@PathVariable String uuid){
         if(br.hasErrors()) {        //如果有错误,直接跳转到修改视图
             return "user/update";
         }
-        System.out.print(user.getUuid());
         user.setUuid(uuid);
         userService.update(user);
         return "redirect:/user/users";

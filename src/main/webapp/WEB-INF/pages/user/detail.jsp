@@ -11,28 +11,20 @@
     <title></title>
 </head>
 <body>
-  <form action="/user/${user.uuid}/detail" method="post">
-      <table>
+      <table border="1" width="550px;">
      <tr>
        <td>用户名:</td>
-       <td><input value="" name="username"/></td>
+       <td><input value="${user.username}" name="username"/></td>
      </tr>
         <tr>
             <td>邮箱:</td>
-            <td><input value="" name="email"/></td>
+            <td><input value="${user.email}" name="email"/></td>
         </tr>
     <tr>
           <tr>
               <td>电话:</td>
-              <td><input value="" name="phone"/></td>
+              <td><input value="${user.phone}" name="phone"/></td>
           </tr>
-          <tr>
-       <td>密码:</td>
-       <td><input value="" name="pwd"/></td>
-     </tr>
-    <tr>
-       <td><input type="submit" value="提交"/></td>
-     </tr>
       </table>
   </form>
 </body>
