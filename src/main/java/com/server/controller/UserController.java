@@ -152,10 +152,12 @@ public class UserController {
      *
      */
     @RequestMapping(value="/user/{uuid}/update",method=RequestMethod.POST)
-    public String update(@Validated Users user,BindingResult br){
-        if(br.hasErrors()){        //如果有错误,直接跳转到修改视图
+    public String update(@Validated Users user,BindingResult br,String uuid){
+        if(br.hasErrors()) {        //如果有错误,直接跳转到修改视图
             return "user/update";
         }
+        System.out.print(user.getUuid());
+        user.setUuid(uuid);
         userService.update(user);
         return "redirect:/user/users";
     }

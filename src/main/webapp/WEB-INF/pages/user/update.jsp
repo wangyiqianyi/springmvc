@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-  <form action="/user/add" method="post">
+  <form action="/user/${user.uuid}/update" method="post">
       <table>
      <tr>
        <td>用户名:</td>
@@ -19,17 +19,13 @@
      </tr>
         <tr>
             <td>邮箱:</td>
-            <td><input value="" name="email"/></td>
+            <td><input value="${user.email}" name="email"/></td>
         </tr>
     <tr>
           <tr>
               <td>电话:</td>
-              <td><input value="" name="phone"/></td>
+              <td><input value="${user.phone}" name="phone"/></td>
           </tr>
-          <tr>
-       <td>密码:</td>
-       <td><input value="" name="pwd"/></td>
-     </tr>
     <tr>
        <td><input type="submit" value="提交"/></td>
      </tr>
