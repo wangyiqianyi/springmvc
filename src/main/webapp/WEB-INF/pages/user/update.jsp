@@ -11,11 +11,11 @@
     <title></title>
 </head>
 <body>
-  <form action="/user/addUser" method="post">
+  <form action="/user/add" method="post">
       <table>
      <tr>
        <td>用户名:</td>
-       <td><input value="" name="username"/></td>
+       <td><input value="${user.username}" name="username"/></td>
      </tr>
         <tr>
             <td>邮箱:</td>

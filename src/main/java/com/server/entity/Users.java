@@ -47,14 +47,6 @@ public class Users {
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
-    @Column(name = "age")
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
     @NotNull(message = "手机号码不能为空")
     @Column(name = "phone")
     public String getPhone() {

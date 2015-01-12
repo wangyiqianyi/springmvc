@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Controller
 @Scope
-@RequestMapping("/springmvc")
+@RequestMapping("/")
 public class UserController {
     @Resource
     private IUserService userService;
@@ -74,10 +74,17 @@ public class UserController {
      */
     @RequestMapping(value = "/user/add",method = RequestMethod.POST)
     public String addUser(@Validated Users user,BindingResult br){
-       user.setPwd(user.getPwd());
+        //BindingResult形参一定要跟@Validated修饰的形参后面写验证
+        if(br.hasErrors()){
+            //发生错误的时候跳转到登陆页面
+            return "user/add";
+        }
+        user.setPwd(user.getPwd());
+        user.setPhone(user.getPhone());
+        user.setEmail(user.getEmail());
         user.setUsername(user.getUsername());
         userService.save(user);
-        return "user/add";
+        return "redirect:/user/users";
     }
     /**
     *  Description:查询操作 REST风格
@@ -88,7 +95,7 @@ public class UserController {
     public  String getUsers(ModelMap model){
         List<Users> userList=userService.getAllUser();
         model.addAttribute("userList",userList);
-        return "user/userList";
+        return "user/users";
     }
     /**
      *
@@ -112,10 +119,44 @@ public class UserController {
      * @return            视图页面 /WEB-INF/pages/user/detail.jsp页面
      *
      */
-    @RequestMapping(value = "/user/{uuid}",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{uuid}/detail",method = RequestMethod.GET)
     public String detail(@PathVariable String uuid,Model model){
         Users user=userService.getById(uuid);
         model.addAttribute(user);
         return "user/detail";
+    }
+    /**
+     *
+     *
+     * Description:        预更新操作根据用户id查询用户信息 然后数据交给携带体 展示到视图    REST风格: /更新的用户的用户id/update
+     * @param uuid    @PathVariable修饰 表示形参同URL中的请求参数
+     * @param model        携带数据的Model
+     * @return            视图页面/WEB-INF/pages/user/update页面
+     *
+     */
+    @RequestMapping(value="/user/{uuid}/update",method=RequestMethod.GET)
+    public String update(@PathVariable String uuid, Model model){
+        model.addAttribute("user",userService.getById(uuid));
+        return "user/update";
+    }
+
+    /**
+     *
+     *
+     * Description:        真正更新的操作    REST风格：    /更新的用户的用户id/update
+     * @param user        带更新的用户的信息对象    @Validated修饰表示信息需要被验证
+     * @param br        验证信息绑定对象 必须紧跟在待验证的信息形参后面
+     * @return            视图页面
+     *                    更新成功  请求重定向 /user/users
+     *                    更新失败      转到/WEB-INF/pages/user/update.jsp页面
+     *
+     */
+    @RequestMapping(value="/user/{uuid}/update",method=RequestMethod.POST)
+    public String update(@Validated Users user,BindingResult br){
+        if(br.hasErrors()){        //如果有错误,直接跳转到修改视图
+            return "user/update";
+        }
+        userService.update(user);
+        return "redirect:/user/users";
     }
 }
