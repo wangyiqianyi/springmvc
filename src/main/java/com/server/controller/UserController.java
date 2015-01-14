@@ -2,7 +2,6 @@ package com.server.controller;
 
 import com.server.entity.Users;
 import com.server.service.IUserService;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -50,6 +48,30 @@ public class UserController {
     public String printWelcome(ModelMap model) {
         model.addAttribute("message", "Hello world!");
         return "login";
+    }
+    /**
+     *
+     *
+     * Description:  主界面
+     * @return   页面转到/WEB-INF/pages/home.jsp
+     *
+     */
+    @RequestMapping(value ="/index" ,method = RequestMethod.GET)
+    public String index(ModelMap model) {
+        model.addAttribute("message", "Hello world!");
+        return "home";
+    }
+    /**
+     *
+     *
+     * Description:  主界面
+     * @return   页面转到/WEB-INF/pages/home.jsp
+     *
+     */
+    @RequestMapping(value ="/lock" ,method = RequestMethod.GET)
+    public String lock(ModelMap model) {
+        model.addAttribute("message", "Hello world!");
+        return "lock";
     }
     /**
      *

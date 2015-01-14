@@ -9,4 +9,5 @@ import java.util.List;
  * Created by taller on 15/1/9.
  */
 public interface IUserDao extends IBaseDao<Users>{
+    public List<Users> getByUsername(String username) ;
 }
