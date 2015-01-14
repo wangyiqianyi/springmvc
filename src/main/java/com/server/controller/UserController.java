@@ -35,7 +35,7 @@ public class UserController {
     public String user(ModelMap model){
         model.addAttribute("message","Hello World");
 
-        return "redirect:/user/users";
+        return "redirect:/index";
     }
     /**
      *
@@ -64,14 +64,14 @@ public class UserController {
     /**
      *
      *
-     * Description:  主界面
+     * Description:  锁定用户界面
      * @return   页面转到/WEB-INF/pages/home.jsp
      *
      */
     @RequestMapping(value ="/lock" ,method = RequestMethod.GET)
     public String lock(ModelMap model) {
         model.addAttribute("message", "Hello world!");
-        return "lock";
+        return "/user/lock";
     }
     /**
      *
@@ -82,7 +82,7 @@ public class UserController {
      */
     @RequestMapping(value = "/user/add",method = RequestMethod.GET)
     public String addUserUI(){
-        return "user/add";
+        return "user/register";
     }
     /**
      *
@@ -106,7 +106,7 @@ public class UserController {
         user.setEmail(user.getEmail());
         user.setUsername(user.getUsername());
         userService.save(user);
-        return "redirect:/user/users";
+        return "redirect:/index";
     }
     /**
     *  Description:查询操作 REST风格
@@ -130,7 +130,7 @@ public class UserController {
     @RequestMapping(value = "/user/{uuid}/delete",method = RequestMethod.GET)
     public String deleteUser(@PathVariable String uuid){
         userService.delete(uuid);
-        return "redirect:/user/users";
+        return "redirect:/index";
     }
     /**
      *
@@ -180,7 +180,7 @@ public class UserController {
         }
         user.setUuid(uuid);
         userService.update(user);
-        return "redirect:/user/users";
+        return "redirect:/index";
     }
     @Resource
     public void setUserService(IUserService userService) {

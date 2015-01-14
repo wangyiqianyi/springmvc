@@ -73,11 +73,11 @@
 
         </div>
         <!-- Javascripts --> 
-        <script src="index_data/jquery-2.js"></script>  
-        <script src="index_data/pace.js"></script>  
-        <script src="index_data/bootstrap.js"></script>  
-        <script src="index_data/placeholders.js"></script>   
-        <script src="index_data/custom.js"></script>
+        <script src="js/jquery-2.js"></script>
+        <script src="js/pace.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/placeholders.js"></script>
+        <script src="js/custom.js"></script>
 
         <!-- End Javascripts -->
     </body></html>
