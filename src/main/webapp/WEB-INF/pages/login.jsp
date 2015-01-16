@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/resources/curoadmin/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/statics/curoadmin/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +86,7 @@
                         </div>
                         <div class="form-group text-center">
                             <div>
-                                <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2014/11/28/7d3ebc8aa42855d476d52688b24b16f3/forget.html">Forget
+                                <a href="/user/repwd">Forget
                                     your password?</a></div>
                             <div>
                                 <a href="/user/add">Create

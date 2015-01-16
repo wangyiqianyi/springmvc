@@ -6,21 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-  String path = request.getContextPath();
-  String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/statics/curoadmin/";
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <base href="<%=basePath%>">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
   <title>Tas后台管理系统</title>
   <meta name="description" content="description about your site">
   <meta name="keywords" content="">
   <meta name="author" content="ZTApps">
+
   <!-- Fonts -->
   <link href="css/css.css" rel="stylesheet" type="text/css">
   <link href="css/css_002.css" rel="stylesheet" type="text/css">
@@ -39,11 +36,10 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" href="css/switcher.css" type="text/css">
   <!-- End CSS Files -->
-
 </head>
 <body class="header-fixed skin-blue  pace-done">
-<jsp:include page="left.jsp"/>
-<jsp:include page="main.jsp"/>
+<jsp:include page="../../WEB-INF/pages/left.jsp"/>
+<jsp:include page="../../WEB-INF/pages/main.jsp"/>
 <!-- Javascripts -->
 <script src="js/jquery-2.js"></script>
 <script src="js/pace.js"></script>
