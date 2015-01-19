@@ -111,8 +111,6 @@
 <script src="js/pace.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/placeholders.js"></script>
-<script src="js/custom.js"></script>
-
    <!-- End Javascripts -->
 
 
