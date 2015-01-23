@@ -9,12 +9,13 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
  * Created by taller on 15/1/8.
  */
 @Entity(name="users")
-public class Users {
+public class Users implements Serializable {
     private  String uuid;
     private String username;
     private String pwd;
